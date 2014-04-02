@@ -24,6 +24,7 @@ import android.database.DataSetObserver;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewConfigurationCompat;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -175,6 +176,8 @@ public class SwipeListView extends ListView {
 
         int swipeActionLeft = SWIPE_ACTION_REVEAL;
         int swipeActionRight = SWIPE_ACTION_REVEAL;
+        int swipeDisplaceChoice = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 40,
+                getContext().getResources().getDisplayMetrics());
 
         if (attrs != null) {
             TypedArray styled = getContext().obtainStyledAttributes(attrs, R.styleable.SwipeListView);
@@ -190,6 +193,7 @@ public class SwipeListView extends ListView {
             swipeDrawableUnchecked = styled.getResourceId(R.styleable.SwipeListView_swipeDrawableUnchecked, 0);
             swipeFrontView = styled.getResourceId(R.styleable.SwipeListView_swipeFrontView, 0);
             swipeBackView = styled.getResourceId(R.styleable.SwipeListView_swipeBackView, 0);
+            swipeDisplaceChoice = (int)styled.getDimension(R.styleable.SwipeListView_swipeDisplaceChoice, swipeDisplaceChoice);
         }
 
         if (swipeFrontView == 0 || swipeBackView == 0) {
@@ -203,7 +207,7 @@ public class SwipeListView extends ListView {
 
         final ViewConfiguration configuration = ViewConfiguration.get(getContext());
         touchSlop = ViewConfigurationCompat.getScaledPagingTouchSlop(configuration);
-        touchListener = new SwipeListViewTouchListener(this, swipeFrontView, swipeBackView);
+        touchListener = new SwipeListViewTouchListener(this, swipeFrontView, swipeBackView, swipeDisplaceChoice);
         if (swipeAnimationTime > 0) {
             touchListener.setAnimationTime(swipeAnimationTime);
         }

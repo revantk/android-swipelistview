@@ -46,15 +46,13 @@ import static com.nineoldandroids.view.ViewPropertyAnimator.animate;
  * Touch listener impl for the SwipeListView
  */
 public class SwipeListViewTouchListener implements View.OnTouchListener {
-
-    private static final int DISPLACE_CHOICE = 80;
-
     private int swipeMode = SwipeListView.SWIPE_MODE_BOTH;
     private boolean swipeOpenOnLongPress = true;
     private boolean swipeClosesAllItemsWhenListMoves = true;
 
     private int swipeFrontView = 0;
     private int swipeBackView = 0;
+    private int swipeDisplaceChoice;
 
     private Rect rect = new Rect();
 
@@ -107,7 +105,7 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
      * @param swipeFrontView front view Identifier
      * @param swipeBackView  back view Identifier
      */
-    public SwipeListViewTouchListener(SwipeListView swipeListView, int swipeFrontView, int swipeBackView) {
+    public SwipeListViewTouchListener(SwipeListView swipeListView, int swipeFrontView, int swipeBackView, int swipeDisplaceChoice) {
         this.swipeFrontView = swipeFrontView;
         this.swipeBackView = swipeBackView;
         ViewConfiguration vc = ViewConfiguration.get(swipeListView.getContext());
@@ -117,6 +115,7 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
         configShortAnimationTime = swipeListView.getContext().getResources().getInteger(android.R.integer.config_shortAnimTime);
         animationTime = configShortAnimationTime;
         this.swipeListView = swipeListView;
+        this.swipeDisplaceChoice = swipeDisplaceChoice;
     }
 
     /**
@@ -929,10 +928,10 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
             setAlpha(parentView, Math.max(0f, Math.min(1f,
                     1f - 2f * Math.abs(deltaX) / viewWidth)));
         } else if (swipeCurrentAction == SwipeListView.SWIPE_ACTION_CHOICE) {
-            if ((swipingRight && deltaX > 0 && posX < DISPLACE_CHOICE)
-                    || (!swipingRight && deltaX < 0 && posX > -DISPLACE_CHOICE)
-                    || (swipingRight && deltaX < DISPLACE_CHOICE)
-                    || (!swipingRight && deltaX > -DISPLACE_CHOICE)) {
+            if ((swipingRight && deltaX > 0 && posX < swipeDisplaceChoice)
+                    || (!swipingRight && deltaX < 0 && posX > -swipeDisplaceChoice)
+                    || (swipingRight && deltaX < swipeDisplaceChoice)
+                    || (!swipingRight && deltaX > -swipeDisplaceChoice)) {
                 setTranslationX(frontView, deltaX);
             }
         } else {
