@@ -864,7 +864,7 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
                             (MotionEventCompat.getActionIndex(motionEvent) << MotionEventCompat.ACTION_POINTER_INDEX_SHIFT));
                     swipeListView.onTouchEvent(cancelEvent);
                     if (swipeCurrentAction == SwipeListView.SWIPE_ACTION_CHOICE) {
-                        backView.setVisibility(View.GONE);
+                        //backView.setVisibility(View.GONE);
                     }
                 }
 
