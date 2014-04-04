@@ -348,7 +348,7 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             swipeListView.setItemChecked(position, !lastChecked);
         }
-        swipeListView.onChoiceChanged(position, !lastChecked);
+        swipeListView.onChoiceChanged(position, !lastChecked, swipingRight);
         reloadChoiceStateInView(frontView, position);
     }
 

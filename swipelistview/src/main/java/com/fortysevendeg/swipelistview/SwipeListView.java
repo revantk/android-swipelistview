@@ -433,9 +433,9 @@ public class SwipeListView extends ListView {
      * @param position position that choice
      * @param selected if item is selected or not
      */
-    protected void onChoiceChanged(int position, boolean selected) {
+    protected void onChoiceChanged(int position, boolean selected, boolean swipingRight) {
         if (swipeListViewListener != null && position != ListView.INVALID_POSITION) {
-            swipeListViewListener.onChoiceChanged(position, selected);
+            swipeListViewListener.onChoiceChanged(position, selected, swipingRight);
         }
     }
 

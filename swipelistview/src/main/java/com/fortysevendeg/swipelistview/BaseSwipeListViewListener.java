@@ -43,7 +43,7 @@ public class BaseSwipeListViewListener implements SwipeListViewListener {
     }
 
     @Override
-    public void onChoiceChanged(int position, boolean selected) {
+    public void onChoiceChanged(int position, boolean selected, boolean swipingRight) {
     }
 
     @Override

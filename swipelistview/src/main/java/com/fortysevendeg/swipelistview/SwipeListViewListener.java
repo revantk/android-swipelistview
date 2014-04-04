@@ -94,8 +94,9 @@ public interface SwipeListViewListener {
      * Called when user choice item
      * @param position position that choice
      * @param selected if item is selected or not
+     * @param swipingRight if the item is being swiped right
      */
-    void onChoiceChanged(int position, boolean selected);
+    void onChoiceChanged(int position, boolean selected, boolean swipingRight);
 
     /**
      * User start choice items
