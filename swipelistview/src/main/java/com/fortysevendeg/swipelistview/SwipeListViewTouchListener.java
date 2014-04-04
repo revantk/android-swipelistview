@@ -105,7 +105,8 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
      * @param swipeFrontView front view Identifier
      * @param swipeBackView  back view Identifier
      */
-    public SwipeListViewTouchListener(SwipeListView swipeListView, int swipeFrontView, int swipeBackView, int swipeDisplaceChoice) {
+    public SwipeListViewTouchListener(SwipeListView swipeListView, int swipeFrontView, int swipeBackView,
+                                      int swipeDisplaceChoice) {
         this.swipeFrontView = swipeFrontView;
         this.swipeBackView = swipeBackView;
         ViewConfiguration vc = ViewConfiguration.get(swipeListView.getContext());
@@ -339,11 +340,11 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
         if (lastCount == 0 && count == 1) {
             swipeListView.onChoiceStarted();
             closeOpenedItems();
-            setActionsTo(SwipeListView.SWIPE_ACTION_CHOICE);
+            //setActionsTo(SwipeListView.SWIPE_ACTION_CHOICE);
         }
         if (lastCount == 1 && count == 0) {
             swipeListView.onChoiceEnded();
-            returnOldActions();
+            //returnOldActions();
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             swipeListView.setItemChecked(position, !lastChecked);
