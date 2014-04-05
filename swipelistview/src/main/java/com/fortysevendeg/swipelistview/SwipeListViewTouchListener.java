@@ -530,7 +530,6 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
             ++dismissAnimationRefCount;
             alpha = 0;
         }
-
         animate(view)
                 .translationX(moveTo)
                 .alpha(alpha)
@@ -913,6 +912,9 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
             } else {
                 backView.setVisibility(View.VISIBLE);
             }
+            if (swipeCurrentAction == SwipeListView.SWIPE_ACTION_DISMISS) {
+                setTranslationX(frontView, 0);
+            }
         }
         if (posX < 0 && swipingRight) {
             Log.d("SwipeListView", "change to left");
@@ -922,6 +924,9 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
                 backView.setVisibility(View.GONE);
             } else {
                 backView.setVisibility(View.VISIBLE);
+            }
+            if (swipeCurrentAction == SwipeListView.SWIPE_ACTION_DISMISS) {
+                setTranslationX(frontView, 0);
             }
         }
         if (swipeCurrentAction == SwipeListView.SWIPE_ACTION_DISMISS) {
