@@ -9,7 +9,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.7.+'
+        classpath 'com.android.tools.build:gradle:0.9.+'
         classpath 'com.github.dcendents:android-maven-plugin:1.0'
     }
 }
@@ -47,6 +47,7 @@ subprojects {
 
     dependencies {
         compile 'com.android.support:appcompat-v7:19.0.+'
+        compile 'com.nineoldandroids:library:2.4.0+'
     }
 }
 
